@@ -1,0 +1,74 @@
+#include<stdio.h>
+#include<stdlib.h>
+//Queue  FIFO      队   先进先出
+//Stack  FIFL      栈   后进后出
+#define TRUE 1
+#define FLASE 0
+typedef int BOOL;
+typedef struct STACK
+{
+int id;
+struct STACK *pNext;
+
+}Stack;
+void Push(Stack **ppTop,int id);
+BOOL IsEmpty(Stack *pTop);//判断是否为空
+Stack *Pop(Stack **ppTop);
+int main()
+{
+	int a=1;
+	Stack *p=NULL;
+	Stack *pTop=NULL;
+	printf("%d   %d\n",a,a++);
+	Push(&pTop,1);
+	Push(&pTop,2);
+	Push(&pTop,3);
+	Push(&pTop,4);
+	
+	p=Pop(&pTop);
+	
+return 0;
+}
+void Push(Stack **ppTop,int id)
+{
+
+	Stack *pTemp=(Stack *)malloc(sizeof(Stack));
+	pTemp->id=id;
+	pTemp->pNext=NULL;
+	/*if(*ppTop==NULL)
+	{
+		*ppTop=pTemp;
+		return;
+	}
+	else
+	{*/
+		pTemp->pNext=*ppTop;//不管有没有直接指向栈顶
+		*ppTop=pTemp;
+	//}
+	return;
+}
+int IsEmpty(Stack *pTop)
+{
+	if(pTop==NULL)
+	{
+	return TRUE;
+	}
+	else
+	{
+	return FLASE;
+	}
+}
+Stack *Pop(Stack **ppTop)
+{
+	Stack *pMark = NULL;
+	if(IsEmpty(*ppTop))
+	{
+		return NULL;
+	}
+	else
+	{
+		pMark = *ppTop;
+		*ppTop = (*ppTop)->pNext;
+		return pMark;
+	}
+}

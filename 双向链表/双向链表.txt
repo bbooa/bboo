@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+typedef struct NODE
+{
+int id;
+struct NODE *pNext;
+struct NODE *pLast;
+}List;
+void AddNode(List **ppHead,List **ppEnd,int id);//直接创造；
+int main()
+{
+	List *pHead=NULL;
+	List *pEnd=NULL;
+	AddNode(&pHead,&pEnd,1);
+	AddNode(&pHead,&pEnd,2);
+	AddNode(&pHead,&pEnd,3);
+	AddNode(&pHead,&pEnd,4);
+	return 0;
+}
+void AddNode(List **ppHead,List **ppEnd,int id)
+{
+	List *pTemp=(List *)malloc(sizeof(List));
+	pTemp->id=id;
+	pTemp->pNext=NULL;
+	pTemp->pLast=NULL;
+	if(*ppHead==NULL)
+	{
+		*ppHead=pTemp;
+		*ppEnd=pTemp;
+		return;
+	}
+	else
+	{
+		(*ppEnd)->pNext=pTemp;
+		pTemp->pLast=*ppEnd;
+		*ppEnd=pTemp;
+	}
+   return;
+}
