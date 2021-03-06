@@ -1,0 +1,50 @@
+#include <iostream>
+#include <map>
+#include <string>
+#include <list>
+#include <algorithm>
+using namespace std;
+
+//  map （映射表） 内部的结构是 RBTree（红黑树）,查找的效率是 O(log2n)
+
+
+int main()
+{
+
+	map<string,list<int>> mp;
+
+	//list<int> lst;
+	//lst.push_back(104);
+	//mp["理工大学"] = lst;
+
+	mp["理工大学"].push_back(104);
+	mp["理工大学"].push_back(106);
+	mp["理工大学"].push_back(108);
+	mp["理工大学"].push_back(110);
+
+	mp["黑大"].push_back(1104);
+	mp["黑大"].push_back(1106);
+	mp["黑大"].push_back(1108);
+	mp["黑大"].push_back(1110);
+
+	mp["服装城"].push_back(204);
+	mp["服装城"].push_back(206);
+	mp["服装城"].push_back(208);
+	mp["服装城"].push_back(210);
+
+
+	string str;
+	cin >> str;
+
+	list<int>::iterator ite = mp[str].begin();
+	while(ite != mp[str].end())
+	{
+		cout << *ite << " ";
+		++ite;
+	}
+
+
+
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,74 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+//  vector 是数组，   确定个数，方便读取数据
+//	list   是链表，   不确定个数，方便插入删除
+
+
+
+void Show(int a)
+{
+	cout << a << " "; 
+}
+
+int main()
+{
+	vector<int> vec(10,123);   //  一个数组  有10的元素
+
+	//vector<int>::iterator ite = vec.begin();
+	//while(ite != vec.end())
+	//{
+	//	cout << *ite << " ";
+	//	++ite;
+	//}
+	//cout << "size: " << vec.size() << " capacity:" << vec.capacity() << endl;
+
+
+	//for(int i=0;i<10;i++)
+	//	cout << vec[i] << " " ;
+	//cout << "size: " << vec.size() << " capacity:" << vec.capacity() << endl;
+
+
+	::for_each(vec.begin(),vec.end(),&Show);
+	cout << "size: " << vec.size() << " capacity:" << vec.capacity() << endl;
+	
+	
+	vec.push_back(125); //  添加
+	vec.push_back(126); //  添加
+	vec.push_back(127); //  添加
+
+	::for_each(vec.begin(),vec.end(),&Show);
+	cout << "size: " << vec.size() << " capacity:" << vec.capacity() << endl;
+	
+	vec.pop_back();   // 删除
+
+	::for_each(vec.begin(),vec.end(),&Show);
+	cout << "size: " << vec.size() << " capacity:" << vec.capacity() << endl;
+		
+	vector<int>::iterator itePos = ::find(vec.begin(),vec.end(),126);
+	vec.erase(itePos);   //  指定的位置删除
+
+	::for_each(vec.begin(),vec.end(),&Show);
+	cout << "size: " << vec.size() << " capacity:" << vec.capacity() << endl;
+		
+
+	//vec.clear();   // 清空
+
+	::for_each(vec.begin(),vec.end(),&Show);
+	cout << "size: " << vec.size() << " capacity:" << vec.capacity() << endl;
+		
+
+	//  begin end   ===>   p                 front back ====> *p
+	cout << vec.front() << endl;
+	cout << vec.back() << endl;
+	vec.front() = 200;
+	vec.back() = 300;
+
+	::for_each(vec.begin(),vec.end(),&Show);
+	cout << "size: " << vec.size() << " capacity:" << vec.capacity() << endl;
+		
+	system("pause");
+	return 0;
+}

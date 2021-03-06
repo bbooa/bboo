@@ -1,0 +1,65 @@
+#include <iostream>
+#include <map>
+#include <algorithm>
+using namespace std;
+
+void Show(pair<char,int> pr)
+{
+	cout << pr.first << " " << pr.second << endl;
+}
+
+int main()
+{
+	map<char,int> mp;
+	mp['E'] = 100;
+	mp['A'] = 200;
+	mp['B'] = 300;
+	mp['F'] = 400;
+	mp['D'] = 500;
+	mp['C'] = 600;
+
+	//map<char,int>::iterator ite = mp.begin();
+	//while(ite != mp.end())
+	//{
+	//	cout << ite->first << " " << ite->second << endl;
+	//	ite++;
+	//}
+	//cout << "=======================================" << endl;
+
+	::for_each(mp.begin(),mp.end(),&Show);
+	cout << "=======================================" << endl;
+
+
+	mp['B'] = 123;
+
+	::for_each(mp.begin(),mp.end(),&Show);
+	cout << "=======================================" << endl;
+
+	map<char,int>::iterator ite = mp.begin();
+	//ite->first = 'k';   // 键值不能修改
+	ite->second = 456;
+
+	::for_each(mp.begin(),mp.end(),&Show);
+	cout << "=======================================" << endl;
+
+
+	//-------------------------插入删除----------------------
+	ite = mp.find('B');
+	mp.erase(ite);   //  删除
+	::for_each(mp.begin(),mp.end(),&Show);
+	cout << "=======================================" << endl;
+
+
+	pair<char,int> pr('B',987);
+	mp.insert(pr);   // 插入
+	::for_each(mp.begin(),mp.end(),&Show);
+	cout << "=======================================" << endl;
+
+	cout << mp.count('C') << endl;
+
+	cout << mp.size() << endl;
+
+
+	system("pause");
+	return 0;
+}

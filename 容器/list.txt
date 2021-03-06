@@ -1,0 +1,72 @@
+#include <iostream>
+#include <list>
+#include <algorithm>
+using namespace std;
+
+void Show(int nVal)
+{
+	cout << nVal << " ";
+}
+
+int main()
+{
+	list<int> lst;
+	lst.push_back(3);
+	lst.push_back(3);
+	lst.push_back(2);
+	lst.push_back(2);
+	lst.push_back(2);
+	lst.push_back(3);
+	lst.push_back(3);
+	lst.push_back(3);
+	lst.push_back(1);
+	lst.push_back(1);
+	lst.push_back(1);
+
+	::for_each(lst.begin(),lst.end(),&Show);
+	cout << endl << "===============================" << endl;
+
+	//lst.remove(3);    //  删除链表中所有的3
+	lst.unique();      //  删除连续相同的
+
+
+	::for_each(lst.begin(),lst.end(),&Show);
+	cout << endl << "===============================" << endl;
+
+
+	//-------------------结合------------------------------------------------
+	list<int> lst1;
+	lst1.push_back(3);
+	lst1.push_back(5);
+	lst1.push_back(2);
+	lst1.push_back(1);
+	lst1.push_back(8);
+	lst1.push_back(6);
+
+	list<int>::iterator itePos = ::find(lst.begin(),lst.end(),2);
+
+	list<int>::iterator iteFirst = ::find(lst1.begin(),lst1.end(),5);
+	list<int>::iterator iteLast = ::find(lst1.begin(),lst1.end(),8);
+
+	//lst.splice(itePos,lst1);   // 在 lst这个链表的itePos位置，结合 lst1 整个链表
+	//lst.splice(itePos,lst1,iteFirst); // 在 lst这个链表的itePos位置，结合 lst1 中的iteFirst这一个元素
+	//lst.splice(itePos,lst1,iteFirst,iteLast); // 在 lst这个链表的itePos位置，结合 lst1 中的 从iteFirst到iteLast这一段
+
+	lst.sort();
+	lst1.sort();
+
+	lst.merge(lst1);   //  两个有序的链表合并
+
+	lst.reverse();    //  翻转
+
+	::for_each(lst.begin(),lst.end(),&Show);
+	cout << endl << "===============================" << endl;
+	::for_each(lst1.begin(),lst1.end(),&Show);
+	cout << endl << "===============================" << endl;
+
+	if(lst.empty() == false)   // 判断链表是否空
+		cout << "empty" << endl;
+
+	system("pause");
+	return 0;
+}

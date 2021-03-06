@@ -1,0 +1,49 @@
+#include <iostream>
+#include <hash_map>
+#include <algorithm>
+using namespace std;
+
+//  hash_map （哈希表） 内部的结构是 hash_table,查找的效率是 O(1)
+
+int main()
+{
+	hash_map<char,int> hp;
+
+	FILE *fp = 0;
+	//fopen_s(&fp,".\\aa.txt","rb");    //  .  是同级目录  ..  上一级目录
+	fopen_s(&fp,"..\\res\\aa.txt","rb");
+
+	//  读文件  fread fwrite 二进制读写,  fgetc,fgets 字符的读写
+    char c;  
+	while( (c = fgetc(fp)) != EOF)
+	{
+		//  判断 hp 中是否存在 c 这个字符
+		if( hp.count(c) == 0)
+			hp[c] = 1;
+		else
+			hp[c]++;
+	}
+
+	fclose(fp);
+	fp = 0;
+
+	//-----------------------------------------------------------
+	hash_map<char,int>::iterator ite = hp.begin();
+
+	char cMaxChar=ite->first;
+	int nMaxCount=ite->second;
+
+	while(ite != hp.end())
+	{
+		if(nMaxCount < ite->second)
+		{
+			cMaxChar=ite->first;
+			nMaxCount=ite->second;	
+		}
+		++ite;
+	}
+	cout << cMaxChar << " " << nMaxCount << endl;
+
+	system("pause");
+	return 0;
+}

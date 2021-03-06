@@ -1,0 +1,25 @@
+#include <iostream>
+#include <set>
+#include <algorithm>
+using namespace std;
+
+// set 集合  ，自动排序，去除重复
+
+int main()
+{
+	int arr[] = {3,1,2,4,6,7,5,4,3,2,4,3,2,2,2};
+
+	set<int> st(arr,arr+5);
+	set<int>::iterator ite = st.begin();
+	while(ite != st.end())
+	{
+		cout << *ite << " ";
+		++ite;
+	}
+
+
+
+
+	system("pause");
+	return 0;
+}
