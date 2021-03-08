@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+template<typename TT>
+class CPerson
+{
+public:
+	TT m_t;
+
+};
+template<typename YY,typename KK>
+class CHead
+{
+public:
+	YY m_y;
+	KK m_k;
+};
+int main()
+{
+	CPerson<int> cp;
+	CPerson<CHead<double,int>> ps;
+
+}

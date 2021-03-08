@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+template<typename  YY>
+class CPerson
+{
+public:
+	YY nVal;
+public:
+	CPerson(YY t)
+	{
+		nVal=t;
+	
+	}
+public:
+	void show()
+	{
+		cout<<nVal<<endl;
+	}
+
+
+};
+int main()
+{
+	CPerson<int> ps(100);
+	ps.show();
+	system("pause");
+	return 0;
+}
