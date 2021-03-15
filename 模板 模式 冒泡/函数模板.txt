@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+
+template <typename TT>   //  函数模板
+void AA(TT t)
+{
+	cout << t << endl;
+}
+
+
+template <typename TT,typename KK>   //  函数模板
+void BB(TT t,KK k)
+{
+	cout << t << endl;
+}
+
+
+int main()
+{
+	AA(0);
+	AA('a');
+	AA(1.1);
+	AA("asdasd");
+
+	BB('a',11);
+	BB(11,23.123);
+
+	system("pause");
+	return 0;
+}

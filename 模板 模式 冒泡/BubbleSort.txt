@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+
+
+template<typename TT>
+void BubbleSort(TT *arr,int n,bool (*pfun)(TT a,TT b))
+{
+	for(int i=0;i<n-1;i++)   //  排序的次数
+	{
+		for(int j=0;j<(n-1)-i;j++)   //  这一次比较的 个数
+		{
+			if( (*pfun)(arr[j],arr[j+1]) )
+			{
+				//  交换
+				TT temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+			}
+		}
+	}
+}
+
+
+bool Rule1(int a,int b)
+{
+	return a>b;
+}
+
+bool Rule2(double a,double b)
+{
+	return a<b;
+}
+
+
+
+
+int main()
+{
+
+	int arr[10] = {4,3,7,9,0,1,2,8,5,6};
+	BubbleSort(arr,10,&Rule1);
+
+	for(int nVal:arr)
+		cout << nVal << " ";
+	cout << endl;
+
+
+	double arr1[10] = {4.4,3.3,7.7,9.9,0.1,1.1,2.2,8.8,5.5,6.6};
+	BubbleSort(arr1,10,&Rule2);
+
+	for(double nVal:arr1)
+		cout << nVal << " ";
+	cout << endl;
+
+
+	system("pause");
+	return 0;
+}
+
+
