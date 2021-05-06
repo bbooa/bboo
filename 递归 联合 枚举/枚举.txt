@@ -1,0 +1,26 @@
+#include"stdio.h"
+#include"stdlib.h"
+//枚举
+enum AA {one,two,three};
+int main()
+{
+ enum AA a=one;
+ switch(a)
+ {
+ case one:
+	 printf("石头\n");
+	 break;
+case two:
+	 printf("石头\n");
+	 break;
+case three:
+	 printf("石头\n");
+	 break;
+
+ 
+ }
+
+
+
+return 0;
+}

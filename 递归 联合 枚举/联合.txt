@@ -1,0 +1,23 @@
+#include<stdio.h>
+//联合 共享一个空间 占最大的字节
+union MyUnion
+{
+char a;
+short b;
+int c;
+int arr[4];//按数组大小；16
+};
+int main()
+{
+union MyUnion a;
+a.a=1;
+//a.c=1;
+printf("%d\n",sizeof(a));//16
+
+//printf("%p\n",&a.a);//共享一个空间；
+//printf("%p\n",&a.b);
+//printf("%p\n",&a.c);
+//printf("%d\n",a.a);//1  共享一个空间；
+printf("%d\n",a.c);//乱码  因为char 占一个字节；
+
+}
