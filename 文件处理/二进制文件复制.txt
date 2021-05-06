@@ -1,0 +1,18 @@
+#include<stdio.h>
+int main()
+{
+	FILE *pFile1;
+	FILE *pFile2;
+	char buff[1024]={0};
+	int n;
+	fopen_s(&pFile1,"C:\\Users\\刘淼\\Desktop\\学习资料\\课件\\通讯录-2.png","rb");
+	fopen_s(&pFile2,"D:\\通讯录.png","wb");
+	while((n=fread(buff,1,1024,pFile1))>0)
+	{
+		fwrite(buff,1,n,pFile1);
+	
+	}
+	fclose(pFile1);
+	fclose(pFile2);
+return 0;
+}

@@ -1,0 +1,18 @@
+#include<stdio.h>
+int main()
+{
+	FILE *pFile1;
+	FILE *pFile2;
+	char c;
+	fopen_s(&pFile1,"D:\\111.txt.txt","r");
+	fopen_s(&pFile2,"D:\\333.txt.txt","w");
+	while((c=getc(pFile1))!=EOF)//getc取文件字符 EOF文件结束标识
+	{
+		putc(c,pFile2);
+	
+	}
+	fclose(pFile1);
+	fclose(pFile2);
+
+		return 0;
+}
