@@ -1,0 +1,26 @@
+#include<stdio.h>
+//结构体
+//储存不同类型元素的集合；
+ typedef struct AA
+{
+int id;
+char *name;
+char *number;
+
+} EE;//要有分号；
+int main()
+{
+	struct AA a={1,"刘淼","110"};
+	EE b;
+	EE *p=&b;
+	b.id=2;
+	b.name="丹妮";
+	b.number="120";
+	a.name="佩奇";//可以修改；
+	printf("%d %s %s\n",a);//不规范  printf("%d %s %s\n",a.id,a.name,a.number);
+	printf("%d %s %s\n",*p);//不规范 在低级编译器容易出错；
+	printf("%d %s %s\n",*p,*(p+1),*(p+2));
+	printf("%d %s %s\n",(*p).id,(*p).name,(*p).number);
+	printf("%d %s %s\n",p->id,p->name,p->number);
+return 0;
+}

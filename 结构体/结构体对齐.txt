@@ -1,0 +1,54 @@
+#include<stdio.h>
+struct AA
+{
+int a;
+char *b;
+char *c;
+
+};
+struct BB
+{
+int a;
+char b;
+short c;
+
+};
+struct CC
+{
+char a;
+int b;
+short c;
+
+};
+struct DD
+{
+int a;
+char b;
+double c;
+
+};
+struct EE
+{
+double a;
+short b;
+int c;
+
+};
+struct FF
+{
+char a[7];//代表7个char；
+int b;
+
+
+};
+int main()
+{
+	struct EE a;
+	printf("%d\n",sizeof(struct AA));//12
+	printf("%d\n",sizeof(struct BB));//8
+	printf("%d\n",sizeof(struct CC));//12
+	printf("%d\n",sizeof(struct DD));//16
+	printf("%d\n",sizeof(struct FF));//12
+	printf("%p %p",&a.b,&a.c);//差四个字节；
+return 0;
+}

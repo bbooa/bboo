@@ -1,0 +1,32 @@
+#include<stdio.h>
+typedef struct NODE
+{
+int id;
+char *name;
+char *tel;
+struct NODE *pNext;
+
+} Node;
+int main()
+{
+	Node a={1,"赤膊","110",NULL};
+	Node b={2,"张新","120",NULL};
+	Node c={3,"瑞瑞","114",NULL};
+	Node d={4,"体委","119",NULL};
+	Node e={5,"刘淼","112",NULL};
+	Node *p=&a;
+	a.pNext=&b;
+	b.pNext=&c;
+	c.pNext=&d;
+	d.pNext=&e;
+	while(p!=NULL)//如果p改为p->pNext;
+	{
+	printf("%d  %s  %s\n",p->id,p->name,p->tel);//printf("%d  %s  %s\n",(*p).id,(*p).name,(*p).tel)//
+	//printf("%d  %s  %s\n",*p);
+	//printf("%d  %s  %s\n",*p,*(p+1),*(p+2));
+	p=p->pNext;
+	}
+
+
+return 0;
+}
