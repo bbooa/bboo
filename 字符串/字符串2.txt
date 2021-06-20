@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+
+int main()
+{
+
+	char str[6]={'a','b','c','d','e','\0'};//char str[5]={'a','b','c','d'};
+	/////-----------------------------------------------
+	char str1[6]="abcde";    //这两个常用  第一个可以修改；
+	char *str2="abcde";      //            第二个不可以修改
+	printf("%d\n",strlen(str));//5
+	printf("%d\n",sizeof(str));//6
+	printf("%d\n",strlen(str1));//5
+	printf("%d\n",sizeof(str1));//6
+	printf("%d\n",strlen(str2));//5
+	printf("%d\n",sizeof(str2));//4
+
+
+	return 0;
+}
