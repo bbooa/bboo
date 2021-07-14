@@ -1,0 +1,117 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+typedef struct NODE
+{
+	int id;
+    struct NODE *pNext;
+
+}Node;
+Node *GetNode(int id);
+void AddNode(Node **ppHead,Node **ppEnd,Node *pNode);
+void InsetNode(Node **ppHead,Node **ppEnd,Node *pNode,int id);
+void DeleteNode(Node **ppHead,Node **ppEnd,int id);
+int main()
+{
+	Node *pHead=NULL;
+	Node *pEnd=NULL;
+	AddNode(&pHead,&pEnd,GetNode(1));
+	AddNode(&pHead,&pEnd,GetNode(2));
+	AddNode(&pHead,&pEnd,GetNode(3));
+	AddNode(&pHead,&pEnd,GetNode(4));
+    AddNode(&pHead,&pEnd,GetNode(5));
+	InsetNode(&pHead,&pEnd,GetNode(6),6);
+	DeleteNode(&pHead,&pEnd,6);
+	AddNode(&pHead,&pEnd,GetNode(6));
+	AddNode(&pHead,&pEnd,GetNode(7));
+	while(pHead!=NULL)
+	{
+		printf("%d\n",pHead->id);
+		pHead=pHead->pNext;
+	}
+return 0;
+
+}
+////产生节点
+Node *GetNode(int id)
+{
+	Node *pTemp=(Node *)malloc(sizeof(Node));
+	pTemp->id=id;
+	pTemp->pNext=NULL;
+
+	return pTemp;
+
+}
+////添加节点
+void AddNode(Node **ppHead,Node **ppEnd,Node *pNode)
+{
+	if(*ppHead==NULL)
+	{
+		*ppHead=pNode;
+	
+	}
+	else
+	{
+		(*ppEnd)->pNext=pNode;
+		
+	
+	}
+*ppEnd=pNode;
+return ;
+}
+////插入节点
+void InsetNode(Node **ppHead,Node **ppEnd,Node *pNode,int id)
+{
+	Node *pMark=*ppHead;
+	if((*ppHead)->id==id)
+	{
+		pNode->pNext=*ppHead;
+		*ppHead=pNode;
+		return;
+	}
+	while(pMark->pNext!=NULL)
+	{
+		if(pMark->pNext->id==id)
+		{
+			pNode->pNext=pMark->pNext;
+			pMark->pNext=pNode;
+		return;
+		}
+		pMark=pMark->pNext;
+	}
+	(*ppEnd)->pNext=pNode;
+	*ppEnd=pNode;
+	return;
+}
+
+////删除节点
+void DeleteNode(Node **ppHead,Node **ppEnd,int id)
+
+{
+	Node *pMark=*ppHead;
+
+	if((*ppHead)->id==id)
+{
+	*ppHead=(*ppHead)->pNext;
+	return;
+}
+	while(pMark->pNext->id!=NULL)//遍历链表
+	{
+		
+		if(pMark->pNext->id==id)
+		{
+			if(pMark->pNext->pNext==NULL)//判断删除的是否为最后一个节点
+			{
+				pMark->pNext=pMark->pNext->pNext;//标记的下一个等于标记下一个的下一个；
+				*ppEnd=pMark;
+				return;
+			}
+			pMark->pNext=pMark->pNext->pNext;
+			
+		return;
+		}
+		pMark=pMark->pNext;
+	}
+
+		return;
+}

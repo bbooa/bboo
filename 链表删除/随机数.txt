@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+int main()
+{
+	srand((unsigned int)time(NULL));//种种子；
+	printf("%d\n",rand()%10);
+    printf("%d\n",rand()%9+1);
+	printf("%d\n",rand());
+	printf("%d\n",rand());
+	printf("%d\n",rand());
+		printf("%d\n",time(NULL)/60/60/24/365);//time(NULL)1970 年到现在多少秒
+return 0;
+}
