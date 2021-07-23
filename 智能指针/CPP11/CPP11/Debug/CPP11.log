@@ -1,0 +1,19 @@
+﻿生成启动时间为 2020/8/7 11:50:30。
+     1>项目“D:\Desktop\学习资料\智能指针\CPP11\CPP11\CPP11.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         D:\Visual Studio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt auto_ptr.cpp lamda.cpp
+         lamda.cpp
+         auto_ptr.cpp
+         正在生成代码...
+       Link:
+         D:\Visual Studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Desktop\学习资料\智能指针\CPP11\Debug\CPP11.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Desktop\学习资料\智能指针\CPP11\Debug\CPP11.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Desktop\学习资料\智能指针\CPP11\Debug\CPP11.lib" /MACHINE:X86 Debug\auto_ptr.obj
+         Debug\lamda.obj
+         Debug\main.obj
+         Debug\shared_ptr.obj
+         Debug\unique_ptr.obj
+         CPP11.vcxproj -> D:\Desktop\学习资料\智能指针\CPP11\Debug\CPP11.exe
+     1>已完成生成项目“D:\Desktop\学习资料\智能指针\CPP11\CPP11\CPP11.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:02.89

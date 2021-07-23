@@ -1,0 +1,54 @@
+weak_ptr是用来解决shared_ptr相互引用时的死锁问题,如果说两个shared_ptr相互引用,
+那么这两个指针的引用计数永远不可能下降为0,资源永远不会释放。它是对对象的一种弱引用，
+不会增加对象的引用计数，和shared_ptr之间可以相互转化，
+shared_ptr可以直接赋值给它，它可以通过调用lock函数来获得shared_ptr。
+class B;
+class A
+{
+public:
+    shared_ptr<B> pb_;
+    ~A()
+    {
+        cout<<"A delete\n";
+    }
+};
+class B
+{
+public:
+    shared_ptr<A> pa_;
+    ~B()
+    {
+        cout<<"B delete\n";
+    }
+};
+ 
+void fun()
+{
+    shared_ptr<B> pb(new B());
+    shared_ptr<A> pa(new A());
+    pb->pa_ = pa;
+    pa->pb_ = pb;
+    cout<<pb.use_count()<<endl;
+    cout<<pa.use_count()<<endl;
+}
+ 
+int main()
+{
+    fun();
+    return 0;
+}
+运行结果
+2
+2
+
+1
+2
+B delete
+A delete
+可以看到fun函数中pa ，pb之间互相引用，两个资源的引用计数为2，当要跳出函数时，
+智能指针pa，pb析构时两个资源引用计数会减一，但是两者引用计数还是为1，
+导致跳出函数时资源没有被释放（A B的析构函数没有被调用），
+如果把其中一个改为weak_ptr就可以了，我们把类A里面的shared_ptr<B> pb_; 
+改为weak_ptr<B> pb_; 运行结果如下，这样的话，资源B的引用开始就只有1，
+当pb析构时，B的计数变为0，B得到释放，B释放的同时也会使A的计数减一，
+同时pa析构时使A的计数减一，那么A的计数为0，A得到释放。
