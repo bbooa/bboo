@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<string.h>
+char *MyStrcat(char* str1,char *str2);
+char *MyStrncat(char* str1,char *str2,int n);
+int main()
+{
+	char str1[]="abcd";
+	char str2[10]="123";
+	//strcat(str2,str1);
+	//strcat_s(str2,sizeof(str2),str1);//"123abcd"
+	//strncat(str2,str1,2);
+	//MyStrcat(str2,str1);
+	MyStrncat(str2,str1,2);
+	printf("%s\n",str2);
+
+return 0;
+}
+char *MyStrcat(char* str1,char *str2)
+{
+	char *Pmark=str1;
+	while(*str1!='\0')
+	{
+	str1++;
+	
+	}
+	while(*str2!='\0')
+	{
+	*str1=*str2;
+	str1++;
+	str2++;
+	
+	
+	}
+	
+	//*str1='\0';
+	return Pmark;
+}
+char *MyStrncat(char* str1,char *str2,int n)
+{
+	char*pmark=str1;
+	int i;
+	while(*str1!='\0')
+	{
+	str1++;
+	
+	}
+
+	for(i=0;i<n;i++)
+	{
+*str1++=*str2++;//不能用*str1[i]=*str[i]  因为str1 不是重str[0]开始；
+	
+	}
+	return pmark;
+}
